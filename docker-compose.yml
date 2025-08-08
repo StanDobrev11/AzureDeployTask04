@@ -1,0 +1,9 @@
+services:
+  azure-terra:
+    image: azure-terra
+    volumes:
+      - ./workspace:/workspace
+      - "C:/Users/user/.azure:/root/.azure"
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
