@@ -22,7 +22,7 @@ resource "random_integer" "ri" {
 # Create a resource group
 resource "azurerm_resource_group" "azrg" {
   name     = "${var.resource_group_name}-${random_integer.ri.result}"
-  location = "${var.resource_group_location}-${random_integer.ri.result}"
+  location = "${var.resource_group_location}"
 }
 
 resource "azurerm_service_plan" "azsp" {
@@ -82,7 +82,7 @@ resource "azurerm_mssql_firewall_rule" "AzureTask03FirewallRule" {
 
 resource "azurerm_app_service_source_control" "AzureTask03SourceControl" {
   app_id                 = azurerm_linux_web_app.azwa.id
-  repo_url               = "https://github.com/StanDobrev11/03"
+  repo_url               = var.repo_url
   branch                 = "main"
   use_manual_integration = true
 }
